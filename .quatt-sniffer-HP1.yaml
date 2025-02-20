@@ -563,42 +563,42 @@ binary_sensor:
 ##Selection of register 2119 status bits put into binary sensors
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Alarm - Main Line Current" #R2119b0
+  name: "HP1 Alarm Main Line Current" #R2119b0
   icon: mdi:message-alert
   register_type: holding
   address: 2119
   bitmask: 0x1
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Info - Compressor Oil Return" #R2119b3
+  name: "HP1 Info Compressor Oil Return" #R2119b3
   icon: mdi:message-alert
   register_type: holding
   address: 2119
   bitmask: 0x8
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Alarm - High Pressure Switch" #R2119b4
+  name: "HP1 Alarm High Pressure Switch" #R2119b4
   icon: mdi:message-alert
   register_type: holding
   address: 2119
   bitmask: 0x10
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Alarm - 1st Start Pre-heat" #R2119b6
+  name: "HP1 Alarm 1st Start Pre-heat" #R2119b6
   icon: mdi:message-alert
   register_type: holding
   address: 2119
   bitmask: 0x40
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Alarm - AC High/Low Voltage" #R2119b9
+  name: "HP1 Alarm AC High/Low Voltage" #R2119b9
   icon: mdi:message-alert
   register_type: holding
   address: 2119
   bitmask: 0x200
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Alarm - Low Pressure Switch" #R2119b12
+  name: "HP1 Alarm Low Pressure Switch" #R2119b12
   icon: mdi:message-alert
   register_type: holding
   address: 2119
