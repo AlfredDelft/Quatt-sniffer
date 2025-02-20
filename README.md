@@ -1,5 +1,7 @@
 # Quatt-sniffer  (c) 2024 M10tech
 
+**This fork is for testing puposes only**
+
 Purpose of this repo is to sniff info from the Quatt modbus interface into HomeAssistant
 
 Reusing the framework of modbus and modbus_controller we introduce the role `sniffer`  
