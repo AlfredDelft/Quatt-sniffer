@@ -53,7 +53,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP-Compressor Level set by CiC"
-  friendly-name: "HP-Compressor Level set by CiC"
+#  friendly-name: "HP-Compressor Level set by CiC" ## this is not a valid option
   register_type: holding
   address: 1999    ## address of the register inside the Quatt outdoor unit
   state_class: "measurement"
