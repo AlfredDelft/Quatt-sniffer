@@ -1,7 +1,7 @@
 esphome:
   project:
     name: "Tweakers.Quatt Modbus sniffer"
-    version: "v0.9.0"
+    version: "v0.9.1"   # multiple throttling values 1s, 10s
 
 external_components:
   # use all components from GitHub repository
@@ -69,6 +69,8 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   name: "HP1 Pump Mode set by CiC"
   register_type: holding
   address: 2010
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -78,6 +80,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
+    - throttle: ${throttling_value_10s}
     - multiply: 0.01
     - clamp:
         min_value: 0
@@ -89,6 +92,9 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   name: "HP1 Working Mode set by CiC"
   register_type: holding
   address: 3999
+  filters:
+    - throttle: ${throttling_value_10s}
+
 
 ## next, use register_count: to make one read range from 2099 to 2138
 ## https://esphome.io/components/modbus_controller#optimizing-modbus-communications
@@ -97,6 +103,9 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   name: "HP1 Working Mode Actual"
   register_type: holding
   address: 2099
+  filters:
+    - throttle: ${throttling_value_10s}
+
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -108,7 +117,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 1
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -125,7 +134,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 0.1
     - clamp:
         min_value: 0
@@ -142,7 +151,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -159,7 +168,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -178,7 +187,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -197,7 +206,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -213,7 +222,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -228,6 +237,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   address: 2108
   bitmask: 0xf782   ## all the remaining bits
   filters:
+    - throttle: ${throttling_value_10s}
     - multiply: 2   ## due to bitmask doing mask_and_shift_by_rightbit our mask divides by 2 which we undo
 
 ## we cannot remove this register since this will mess up the previous bitmask register, so internal=true
@@ -241,7 +251,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 0
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
@@ -258,7 +268,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -276,7 +286,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -294,7 +304,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -313,7 +323,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -331,7 +341,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 0.1
     - clamp:
         min_value: 0
@@ -348,7 +358,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 0.1
     - clamp:
         min_value: 0
@@ -363,24 +373,32 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   name: "HP1 Status bits R2119"
   register_type: holding
   address: 2119
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Status bits R2120"
   register_type: holding
   address: 2120
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Status bits R2121"
   register_type: holding
   address: 2121
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Firmware Version"
   register_type: holding
   address: 2122
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -388,6 +406,8 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   register_type: holding
   address: 2123
   register_count: 8 ## fill gap for 2124-2130
+  filters:
+    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -399,7 +419,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -417,7 +437,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -435,7 +455,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -453,7 +473,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
@@ -473,7 +493,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   accuracy_decimals: 2
   filters:
     - throttle: ${throttling_value}
-    - offset: -3000
+    - offset: -throttling_value_10s
     - multiply: 0.01
     - clamp:
         min_value: -30
@@ -490,7 +510,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 0.1
 
 - platform: modbus_controller
@@ -504,7 +524,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   icon: mdi:gauge
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - multiply: 0.618
 
 
@@ -516,42 +536,63 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x1
+  filters:
+    - throttle: ${throttling_value_10s}
+  
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Bottom Heater" #R2108b2
   register_type: holding
   address: 2108
   bitmask: 0x4
+  filters:
+    - throttle: ${throttling_value}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Crankcase Heater" #R2108b3
   register_type: holding
   address: 2108
   bitmask: 0x8
+  filters:
+    - throttle: ${throttling_value}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Fan Defrost Speed Mode" #R2108b4
   register_type: holding
   address: 2108
   bitmask: 0x10
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Fan High Speed Mode" #R2108b5
   register_type: holding
   address: 2108
   bitmask: 0x20
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 4way Valve" #R2108b6
   register_type: holding
   address: 2108
   bitmask: 0x40
+  filters:
+    - throttle: ${throttling_value}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Pump Relay" #R2108b11
   register_type: holding
   address: 2108
   bitmask: 0x800
+  filters:
+    - throttle: ${throttling_value_10s}
+
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -559,6 +600,9 @@ binary_sensor:
   icon: mdi:snowflake
   register_type: holding
   address: 2118
+  filters:
+    - throttle: ${throttling_value}
+
 
 ##Selection of register 2119 status bits put into binary sensors
 - platform: modbus_controller
@@ -568,6 +612,9 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x1
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Info Compressor Oil Return" #R2119b3
@@ -575,6 +622,9 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x8
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Alarm High Pressure Switch" #R2119b4
@@ -582,6 +632,9 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x10
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Alarm 1st Start Pre-heat" #R2119b6
@@ -589,6 +642,9 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x40
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Alarm AC High/Low Voltage" #R2119b9
@@ -596,6 +652,9 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x200
+  filters:
+    - throttle: ${throttling_value_10s}
+
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
   name: "HP1 Alarm Low Pressure Switch" #R2119b12
@@ -603,3 +662,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x1000
+  filters:
+    - throttle: ${throttling_value_10s}
+
