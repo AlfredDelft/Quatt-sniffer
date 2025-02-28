@@ -528,6 +528,13 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
     - throttle: ${throttling_value_10s}
     - multiply: 0.618
 
+# kopie van een binary sensor als test om te onderzoeken of de value goed doorkomt in mqtt
+- platform: modbus_controller
+  modbus_controller_id: modbus_device_1
+  name: "HP1 Fan Low Speed Mode sensor" #R2108b0
+  register_type: holding
+  address: 2108
+  bitmask: 0x1
 
 binary_sensor:
 ## at least bits 0,2,4,5,6,11 are used for status in R2108
