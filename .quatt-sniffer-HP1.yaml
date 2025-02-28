@@ -537,8 +537,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x1
-#  filters:
-#    - throttle: ${throttling_value_10s}
   
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -546,8 +544,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x4
-  filters:
-    - throttle: ${throttling_value}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -555,8 +551,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x8
-  filters:
-    - throttle: ${throttling_value}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -564,8 +558,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x10
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -573,8 +565,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x20
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -582,8 +572,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x40
-  filters:
-    - throttle: ${throttling_value}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -591,9 +579,6 @@ binary_sensor:
   register_type: holding
   address: 2108
   bitmask: 0x800
-  filters:
-    - throttle: ${throttling_value_10s}
-
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -601,9 +586,6 @@ binary_sensor:
   icon: mdi:snowflake
   register_type: holding
   address: 2118
-  filters:
-    - throttle: ${throttling_value}
-
 
 ##Selection of register 2119 status bits put into binary sensors
 - platform: modbus_controller
@@ -613,8 +595,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x1
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -623,8 +603,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x8
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -633,8 +611,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x10
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -643,8 +619,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x40
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -653,8 +627,6 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x200
-  filters:
-    - throttle: ${throttling_value_10s}
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
@@ -663,6 +635,4 @@ binary_sensor:
   register_type: holding
   address: 2119
   bitmask: 0x1000
-  filters:
-    - throttle: ${throttling_value_10s}
 
