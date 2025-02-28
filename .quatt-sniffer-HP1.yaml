@@ -58,6 +58,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   address: 1999    ## address of the register inside the Quatt outdoor unit
   state_class: "measurement"
   filters:
+    - throttle: ${throttling_value_10s}
     - multiply: 1
     - clamp:
         min_value: 0
