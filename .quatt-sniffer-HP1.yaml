@@ -493,7 +493,7 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
   state_class: "measurement"
   accuracy_decimals: 2
   filters:
-    - throttle: ${throttling_value}
+    - throttle: ${throttling_value_10s}
     - offset: -3000
     - multiply: 0.01
     - clamp:
