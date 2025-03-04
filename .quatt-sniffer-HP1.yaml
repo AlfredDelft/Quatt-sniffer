@@ -529,33 +529,33 @@ sensor: ## remember this setup MUST match the commands that a CIC sends to a Qua
     - multiply: 0.618
 
 # kopie van een binary sensor als test om te onderzoeken of de value goed doorkomt in mqtt
-- platform: modbus_controller
-  modbus_controller_id: modbus_device_1
-  name: "HP1 Bottom Heater" #R2108b2
-  register_type: holding
-  address: 2108
-  bitmask: 0x4
+#- platform: modbus_controller
+#  modbus_controller_id: modbus_device_1
+#  name: "HP1 Bottom Heater" #R2108b2
+#  register_type: holding
+#  address: 2108
+#  bitmask: 0x4
 
-- platform: modbus_controller
-  modbus_controller_id: modbus_device_1
-  name: "HP1 Crankcase Heater" #R2108b3
-  register_type: holding
-  address: 2108
-  bitmask: 0x8  
+#- platform: modbus_controller
+#  modbus_controller_id: modbus_device_1
+#  name: "HP1 Crankcase Heater" #R2108b3
+#  register_type: holding
+#  address: 2108
+#  bitmask: 0x8  
 
-- platform: modbus_controller
-  modbus_controller_id: modbus_device_1
-  name: "HP1 4way Valve" #R2108b6
-  register_type: holding
-  address: 2108
-  bitmask: 0x40  
+#- platform: modbus_controller
+#  modbus_controller_id: modbus_device_1
+#  name: "HP1 4way Valve" #R2108b6
+#  register_type: holding
+#  address: 2108
+#  bitmask: 0x40  
 
-- platform: modbus_controller
-  modbus_controller_id: modbus_device_1
-  name: "HP1 Defrost Mode" #R2118b0
-  icon: mdi:snowflake
-  register_type: holding
-  address: 2118  
+#- platform: modbus_controller
+#  modbus_controller_id: modbus_device_1
+#  name: "HP1 Defrost Mode" #R2118b0
+#  icon: mdi:snowflake
+#  register_type: holding
+#  address: 2118  
 
 binary_sensor:
 ## at least bits 0,2,4,5,6,11 are used for status in R2108
@@ -568,14 +568,14 @@ binary_sensor:
   
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Bottom Heater bool" #R2108b2
+  name: "HP1 Bottom Heater" #R2108b2
   register_type: holding
   address: 2108
   bitmask: 0x4
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Crankcase Heater bool" #R2108b3
+  name: "HP1 Crankcase Heater" #R2108b3
   register_type: holding
   address: 2108
   bitmask: 0x8
@@ -596,7 +596,7 @@ binary_sensor:
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 4way Valve bool" #R2108b6
+  name: "HP1 4way Valve" #R2108b6
   register_type: holding
   address: 2108
   bitmask: 0x40
@@ -610,7 +610,7 @@ binary_sensor:
 
 - platform: modbus_controller
   modbus_controller_id: modbus_device_1
-  name: "HP1 Defrost Mode bool" #R2118b0
+  name: "HP1 Defrost Mode" #R2118b0
   icon: mdi:snowflake
   register_type: holding
   address: 2118
